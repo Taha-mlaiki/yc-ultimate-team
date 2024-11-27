@@ -444,8 +444,10 @@ const closeListPlayers = () => {
 
 const appendPlayer = (player, targetPosition, existName) => {
   if (existName) {
-    activePlayer = activePlayer.filter((pl) => pl.name.split(" ")[0] !== existName);
-    console.log("active players :", activePlayer)
+    activePlayer = activePlayer.filter(
+      (pl) => pl.name.split(" ")[0] !== existName
+    );
+    console.log("active players :", activePlayer);
   }
   activePlayer.push(player);
   let badge = "";
@@ -461,8 +463,11 @@ const appendPlayer = (player, targetPosition, existName) => {
             <div
                 data-name=${player.name}
                 id=${player.position}
-                class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-40 aspect-[1/1.4] relative cursor-pointer hover:scale-110 transition-transform activePlayers"
+                class="w-16 sm:w-24 md:w-30 group lg:w-32 xl:w-36 aspect-[1/1.4] relative z-20 cursor-pointer hover:scale-110 transition-transform activePlayers"
             >
+            <div class="absolute hidden z-30 group-hover:block w-[150%] lg:w-[100%] p-2 shadow-lg -top-[10%] lg:-top-[5%] bg-white rounded-lg">
+                
+            </div>
                 <img
                     src="./assets/${badge}"
                     alt="Player badge"
@@ -477,47 +482,23 @@ const appendPlayer = (player, targetPosition, existName) => {
                     <div
                         class="absolute top-[27%] left-[16%] text-center text-white"
                     >
-                        <p class="text-[40%] lg:text-[90%] font-bold">${player.rating}</p>
-                        <p class="text-[27%] lg:text-[78%] font-semibold">${player.position}</p>
+                        <p class="text-[40%] lg:text-[90%] font-bold">${
+                          player.rating
+                        }</p>
+                        <p class="text-[27%] lg:text-[78%] font-semibold">${
+                          player.position
+                        }</p>
                     </div>
                     <div
                         class="absolute top-[65%] w-full text-center text-white"
                     >
-                        <p class="text-[50%] max-w-[70%] mx-auto w-full truncate -mt-1 lg:text-[80%] font-semibold">
+                        <p class="text-[50%] max-w-[70%] mx-auto w-full truncate  lg:text-[80%] font-semibold">
                             ${player.name}
                         </p>
-                        ${player.position !== "GK" ? `
-                         <div class="flex justify-between items-center w-[90%] truncate text-center">
-                            <div class="text-center font-semibold text-white">
-                                <p class="text-[10%] md:text-[50%]">PAC</p>
-                                <p class="text-[10%] md:text-[50%] font-semibold">${player.pace}</p>
-                            </div>
-                            <div class="text-center font-semibold text-white">
-                                <p class="text-[10%] md:text-[50%]">SHO</p>
-                                <p class="text-[10%] md:text-[50%] font-semibold">${player.shooting}</p>
-                            </div>
-                            <div class="text-center font-semibold text-white">
-                                <p class="text-[10%] md:text-[50%]">PAS</p>
-                                <p class="text-[10%] md:text-[50%] font-semibold">${player.passing}</p>
-                            </div>
-                            <div class="text-center font-semibold text-white">
-                                <p class="text-[10%] md:text-[50%]">DRI</p>
-                                <p class="text-[10%] md:text-[50%] font-semibold">${player.dribbling}</p>
-                            </div>
-                            <div class="text-center font-semibold text-white">
-                                <p class="text-[10%] md:text-[50%]">DEF</p>
-                                <p class="text-[10%] md:text-[50%] font-semibold">${player.defending}</p>
-                            </div>
-                            <div class="text-center font-semibold text-white">
-                                <p class="text-[10%] md:text-[50%]">PHY</p>
-                                <p class="text-[10%] md:text-[50%] font-semibold">${player.physical}</p>
-                            </div>
+                        <div class="flex items-center justify-center gap-x-2"> 
+                            <img src=${player.logo} class="w-[10%] h-[10%]" >
+                            <img src=${player.flag} class="w-[10%] h-[10%]">
                         </div>
-                        `:
-                        `
-                        " "
-                        `
-                        }
                     </div>
                 </div>
             </div>
@@ -540,9 +521,9 @@ const RenderPlayerList = (away_players, targetPosition, existName) => {
       "flex py-3 cursor-pointer bg-zinc-50 rounded-lg shadow-md";
 
     playerCard.innerHTML = `
-            <img src=${player.photo} alt="" class="me-2 w-[35%] lg:w-[20%]" />
+            <img src=${player.photo} alt="" class="me-2 w-20 lg:w-32" />
             <div class="flex-grow">
-              <div class="flex justify-between pe-5 flex-wrap gap-x-3">
+              <div class="flex justify-between pe-5 flex-wrap gap-x-3 gap-y-2">
                   <h3 class="font-bold text-xl  text-neutral-700">${
                     player.name
                   }</h3>
@@ -640,3 +621,120 @@ const checkActivePlayers = () => {
     });
   });
 };
+
+let createPlayerPop = document.getElementById("createPop");
+
+const onOpenCreatePlayer = () => {
+  createPlayerPop.toggleAttribute("open", true);
+};
+const onCloseCreatePlayer = () => {
+  createPlayerPop.toggleAttribute("open", false);
+};
+
+const positionAttributes = {
+  GK: [
+    { name: "diving", label: "Diving", type: "number" },
+    { name: "handling", label: "Handling", type: "number" },
+    { name: "kicking", label: "Kicking", type: "number" },
+    { name: "reflexes", label: "Reflexes", type: "number" },
+    { name: "speed", label: "Speed", type: "number" },
+    { name: "positioning", label: "Positioning", type: "number" },
+  ],
+  CM: [
+    { name: "pace", label: "Pace", type: "number" },
+    { name: "shooting", label: "Shooting", type: "number" },
+    { name: "passing", label: "Passing", type: "number" },
+    { name: "dribbling", label: "Dribbling", type: "number" },
+    { name: "defending", label: "Defending", type: "number" },
+    { name: "physical", label: "Physical", type: "number" },
+  ],
+};
+
+document.getElementById("positionSelect").addEventListener("change", (e) => {
+    let dynamicFields = document.getElementById("dynamicFields");
+
+  dynamicFields.innerHTML = "";
+
+  if (e.target.value === "GK") {
+    positionAttributes["GK"].forEach((attr) => {
+      const field = document.createElement("div");
+      field.className = "mb-3";
+      field.innerHTML = `
+        <label class="block font-medium mb-2">${attr.label}</label>
+        <input
+          type="${attr.type}"
+          name="${attr.name}"
+          class="w-full border rounded px-3 py-2"
+          placeholder="${attr.label}"
+        />
+      `;
+      dynamicFields.appendChild(field);
+    });
+  } else {
+    positionAttributes["CM"].forEach((attr) => {
+      const field = document.createElement("div");
+      field.className = "mb-3";
+      field.innerHTML = `
+          <label class="block font-medium mb-2">${attr.label}</label>
+          <input
+            type="${attr.type}"
+            name="${attr.name}"
+            class="w-full border rounded px-3 py-2"
+            placeholder="${attr.label}"
+          />
+        `;
+      dynamicFields.appendChild(field);
+    });
+  }
+});
+
+let playerForm = document.getElementById("playerForm");
+
+document.getElementById("playerForm").addEventListener("submit", function (e) {
+  e.preventDefault(); 
+
+  const playerForm = document.getElementById("playerForm")
+  let formData = new FormData(playerForm);
+  let playerData = Object.fromEntries(formData.entries());
+
+  const nameInput = document.querySelector("input[name='name']");
+  const photoInput = document.querySelector("input[name='photo']");
+
+  const nameError = nameInput.nextElementSibling;
+  const photoError = photoInput.nextElementSibling;
+
+  let isValid = true;
+
+  // Name validation
+  if (
+    nameInput.value.trim().length < 2 ||
+    /[^a-zA-Z\s]/.test(nameInput.value.trim())
+  ) {
+    nameError.textContent = "Invalid name. Please enter at least 2 letters.";
+    nameError.classList.remove("hidden");
+    isValid = false;
+  } else {
+    nameError.textContent = "";
+    nameError.classList.add("hidden");
+  }
+
+  // Photo URL validation
+  const photoRegex =
+    /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-]*)*\/?$/;
+  if (photoInput.value && !photoRegex.test(photoInput.value.trim())) {
+    photoError.textContent = "Please provide a valid URL.";
+    photoError.classList.remove("hidden");
+    isValid = false;
+  } else {
+    photoError.textContent = "";
+    photoError.classList.add("hidden");
+}
+if(!isValid){
+    return
+}
+    console.log("taha is the best")
+    console.log(playerData)
+  players.push(playerData);
+  onCloseCreatePlayer();
+  
+});

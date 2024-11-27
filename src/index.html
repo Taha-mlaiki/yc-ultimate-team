@@ -14,6 +14,7 @@
         <img src="./assets/logoSoccer.svg" alt="" class="w-14" />
         <div>
           <button
+          onclick="onOpenCreatePlayer()"
             class="bg-blue-500 px-4 py-2 rounded-lg flex font-semibold gap-x-3 items-center text-white"
           >
             <img src="./assets/user.svg" alt="player" class="w-6" />
@@ -27,14 +28,14 @@
       <div class="relative w-fit h-fit my-36 mx-auto b">
         <img src="./assets/stadium_background.webp" alt="" class="rounded-sm" />
 
-        <div class="absolute w-full h-full inset-0 top-[-14%]">
+        <div class="absolute w-full h-full inset-0 flex flex-col justify-between">
           <div
             id="forwards"
-            class="relative flex pt-[5%] justify-between items-center px-[10%]"
+            class="relative flex pt-[5%] -mt-[10%] justify-between items-center px-[10%]"
           >
             <div
               id="LW"
-              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
                 src="./assets/placeholder-card.webp"
@@ -50,7 +51,7 @@
             </div>
             <div
               id="ST"
-              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 aspect-[1/1.4] z-20 relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
                 src="./assets/placeholder-card.webp"
@@ -66,7 +67,7 @@
             </div>
             <div
               id="RW"
-              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
                 src="./assets/placeholder-card.webp"
@@ -87,7 +88,7 @@
           >
             <div
               id="CM"
-              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
                 src="./assets/placeholder-card.webp"
@@ -103,7 +104,7 @@
             </div>
             <div
               id="CM"
-              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 aspect-[1/1.4] z-20 relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
                 src="./assets/placeholder-card.webp"
@@ -119,7 +120,7 @@
             </div>
             <div
               id="CM"
-              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
                 src="./assets/placeholder-card.webp"
@@ -140,7 +141,7 @@
           >
             <div
               id="LB"
-              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
                 src="./assets/placeholder-card.webp"
@@ -156,7 +157,7 @@
             </div>
             <div
               id="CB"
-              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
                 src="./assets/placeholder-card.webp"
@@ -172,7 +173,7 @@
             </div>
             <div
               id="CB"
-              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
                 src="./assets/placeholder-card.webp"
@@ -188,7 +189,7 @@
             </div>
             <div
               id="RB"
-              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
                 src="./assets/placeholder-card.webp"
@@ -209,7 +210,7 @@
           >
           <div
               id="GK"
-              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
                 src="./assets/placeholder-card.webp"
@@ -230,10 +231,10 @@
     </main>
     <div
       id="players_list"
-      class="fixed bg-zinc-100 w-full h-full max-h-screen flex flex-col lg:w-[50%] shadow-lg z-50 open:right-0 -right-full transition-all duration-300 top-0 p-5"
+      class="fixed bg-zinc-100 w-full h-full max-h-screen flex flex-col md:[75%] xl:w-[50%] shadow-lg z-50 open:right-0 -right-full transition-all duration-300 top-0 p-5"
     >
       <div class="flex justify-between">
-        <h1 class="text-xl font-bold text-neutral-700">Select a Player</h1>
+        <h1 class="text-xl font-bold text-neutral-700">Substitutes Player</h1>
         <img
           src="./assets/x.svg"
           alt=""
@@ -257,6 +258,76 @@
         class="players_list flex flex-col gap-y-3 mt-10 flex-grow h-full overflow-y-scroll"
       ></div>
     </div>
+    <div id="createPop" class="fixed inset-0 min-h-screen h-full w-full overflow-y-auto backdrop-blur-md z-50 hidden open:flex items-center justify-center p-4">
+        <div class="bg-zinc-50 max-w-2xl max-h-full overflow-y-scroll shadow-lg rounded-lg px-4 py-6 lg:p-5 w-full">
+          <div class="flex items-center justify-between mb-4 p-2">
+            <h1 class="text-xl font-bold text-neutral-700">Create New Player</h1>
+            <img src="./assets/x.svg" onclick="onCloseCreatePlayer()" class="w-8 cursor-pointer">
+          </div>
+          <form id="playerForm">
+            <div class="mb-4">
+              <label class="block font-medium mb-2">Name</label>
+              <input
+                type="text"
+                name="name"
+                class="w-full border rounded px-3 py-2 focus:outline-none"
+                placeholder="Player Name"
+                required
+              />
+              <small class="text-red-500 hidden"></small>
+            </div>
+            <div class="mb-4">
+              <label class="block font-medium mb-2">Photo URL</label>
+              <input
+                type="url"
+                name="photo"
+                class="w-full border rounded px-3 py-2 focus:outline-none"
+                placeholder="Photo URL"
+              />
+              <small class="text-red-500 hidden"></small>
+            </div>
+            <div class="mb-4">
+                <label class="block font-medium mb-2">Rating</label>
+                <input
+                  type="number"
+                  name="rating"
+                  class="w-full border rounded px-3 py-2"
+                  placeholder="rating"
+                />
+              <small class="text-red-500 hidden"></small>
+            </div>
+            <div class="mb-4">
+              <label class="block font-medium mb-2">Position</label>
+              <select
+                name="position"
+                id="positionSelect"
+                class="w-full border rounded px-3 py-2"
+                required
+              >
+                <option value="" disabled selected>Select Position</option>
+                <option value="GK">Goalkeeper (GK)</option>
+                <option value="CM">Central Midfielder (CM)</option>
+                <option value="ST">Striker (ST)</option>
+                <option value="CB">Center back (CB)</option>
+                <option value="LB">Left back (LB)</option>
+                <option value="RB">Right back (RB)</option>
+                <option value="LW">Left wing (LW)</option>
+                <option value="RW">Right wing (RW)</option>
+              </select>
+              <small class="text-red-500 hidden"></small>
+            </div>
+            <div id="dynamicFields" class="grid lg:grid-cols-2 mt-3 gap-5"></div>
+            <button
+              type="submit"
+              class="w-full bg-blue-500 text-white py-2 rounded mt-4"
+            >
+              Create Player
+            </button>
+          </form>
+          
+        </div>
+      </div>
+      
     <script src="./script.js"></script>
   </body>
 </html>
