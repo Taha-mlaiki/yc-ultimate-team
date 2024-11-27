@@ -6,9 +6,11 @@
     <title>Ultimate Team</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
-    <header class="shadow-md">
-      <nav class="max-w-7xl h-16 flex justify-between items-center mx-auto">
+  <body class="bg-zinc-50">
+    <header class="shadow-md bg-white">
+      <nav
+        class="max-w-7xl h-16 flex justify-between items-center mx-auto px-5"
+      >
         <img src="./assets/logoSoccer.svg" alt="" class="w-14" />
         <div>
           <button
@@ -20,692 +22,240 @@
         </div>
       </nav>
     </header>
-    <div class="flex justify-end px-20 mt-10">
-      <button
-        class="bg-zinc-400 hover:bg-zinc-500 transition-all px-4 py-2 rounded-lg flex font-semibold gap-x-3 items-center text-white"
-      >
-        <img src="./assets/users.svg" alt="player" class="w-6" />
-        Show Players
-      </button>
-    </div>
     <main class="flex px-4 lg:px-10">
       <!-- Container for the Stadium -->
-      <div class="relative w-fit h-fit my-36 mx-auto">
-        <img
-          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODkyIiBoZWlnaHQ9IjcyNSIgdmlld0JveD0iMCAwIDkwNCA2NTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik05MDMgNjQ5LjQzOUgxTDEyMC4zMTEgMUg3ODMuNzg4TDkwMyA2NDkuNDM5WiIgZmlsbD0iIzQwNDA0MCIgc3Ryb2tlPSIjNjk2OTY5IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPHBhdGggZD0iTTY5Ljg4NDMgMjc1LjAzOEg4MzQuMTY5IiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNNTUwLjk5MiAyNzUuNDI1QzU1My4xOTQgMzIxLjcwMyA1MDguOTIxIDM2MC43NjMgNDUyLjAxOSAzNjAuNzYzQzM5NS4xMTcgMzYwLjc2MyAzNTAuODUzIDMyMS43MDMgMzUzLjA2MiAyNzUuNDI1QzM1NS4xNzIgMjMxLjEyMyAzOTkuNDUyIDE5Ni41NjQgNDUyLjAzNSAxOTYuNTY0QzUwNC42MTggMTk2LjU2NCA1NDguODkgMjMxLjExNSA1NTAuOTkyIDI3NS40MjVaIiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNNTQxLjI4OCA3MS40MDA4QzU0My4wNzggMTA5LjAwOSA1MDMuMDg2IDE0MC42MzIgNDUxLjg5NyAxNDAuNjMyQzQwMC43MDggMTQwLjYzMiAzNjAuNzMyIDEwOS4wMTcgMzYyLjUzIDcxLjQwMDhDMzY0LjI1OSAzNS4yNDQ2IDQwNC4yNTEgNi45MzU5MSA0NTEuOTIgNi45MzU5MUM0OTkuNTgyIDYuOTM1OTEgNTM5LjU3NCAzNS4yNDQ2IDU0MS4yODggNzEuNDAwOFoiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+CjxwYXRoIGQ9Ik0yNjkuMTI1IDk2LjQ5OTZINjQwLjA5M0w2MzAuNjYzIDEuMTUzMkgyNzguMzEyTDI2OS4xMjUgOTYuNDk5NloiIGZpbGw9IiM0MDQwNDAiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+CjxwYXRoIGQ9Ik0zNzEuOTIyIDU0Ljc2MjVINTMyLjU0Mkw1MzAuMjE5IDEuMTM3MTVIMzc0LjI0NUwzNzEuOTIyIDU0Ljc2MjVaIiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNMzQzLjQ2NCA1MzAuMzMzQzM0Ni4wNjEgNDc0LjU1NCAzOTUuNzggNDMxLjI2MSA0NTQuNjI0IDQzMS4yNjFDNTEzLjQ2OSA0MzEuMjYxIDU2My4yNzkgNDc0LjU1NCA1NjUuOTk4IDUzMC4zMzNDNTY4Ljg1NSA1ODguOTEgNTE5LjE1MSA2MzguNiA0NTQuODUzIDYzOC42QzM5MC41NTQgNjM4LjYgMzQwLjczNyA1ODguOTEgMzQzLjQ3MSA1MzAuMzMzSDM0My40NjRaIiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNNjc1LjU5NyA0OTIuNTcySDIyNy4yNkwyMTEuOTExIDY0OS4xOThINjkwLjg0TDY3NS41OTcgNDkyLjU3MloiIGZpbGw9IiM0MDQwNDAiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+CjxwYXRoIGQ9Ik01NTYuMzYyIDU1Ni42NDJIMzUyLjM1M0wzNDguNDMgNjQ5LjIzOEg1NjAuNDUzTDU1Ni4zNjIgNTU2LjY0MloiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+Cjwvc3ZnPg=="
-          alt=""
-        />
-        <!-- <img src="./assets/stadium_background.webp" alt="" /> -->
+      <div class="relative w-fit h-fit my-36 mx-auto b">
+        <img src="./assets/stadium_background.webp" alt="" class="rounded-sm" />
 
         <div class="absolute w-full h-full inset-0 top-[-14%]">
-          <div class="relative flex justify-between items-center px-[10%]">
+          <div
+            id="forwards"
+            class="relative flex pt-[5%] justify-between items-center px-[10%]"
+          >
             <div
-              class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 transition-transform"
+              id="LW"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
-                src="./assets/badge_gold.webp"
+                src="./assets/placeholder-card.webp"
                 alt="Player badge"
                 class="absolute w-full h-full z-10"
               />
 
-              <div class="relative z-20 w-full h-full">
-                <img
-                  src="https://cdn.sofifa.net/players/158/023/25_120.png"
-                  alt="Player Photo"
-                  class="absolute w-[60%] top-[20%] right-[20%]"
-                />
-                <div
-                  class="absolute top-[27%] left-[16%] text-center text-neutral-700"
-                >
-                  <p class="text-[40%] lg:text-[90%] font-bold">93</p>
-                  <p class="text-[27%] lg:text-[78%] font-semibold">Wc</p>
-                </div>
-                <div
-                  class="absolute top-[65%] w-full text-center text-neutral-700"
-                >
-                  <p class="text-[50%] lg:text-[80%] font-semibold">
-                    Lionel Messi
-                  </p>
-                  <div class="flex justify-between items-center px-[16%]">
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAC</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">SHO</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAS</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DRI</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DEF</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                  </div>
-                </div>
+              <div
+                class="relative z-20 w-[35%] aspect-square rounded-full bg-white flex items-center justify-center top-[40%] left-[35%]"
+              >
+                <img src="./assets/x.svg" alt="" class="w-[40%] rotate-45" />
               </div>
             </div>
             <div
-              class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 transition-transform"
+              id="ST"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
-                src="./assets/badge_gold.webp"
+                src="./assets/placeholder-card.webp"
                 alt="Player badge"
                 class="absolute w-full h-full z-10"
               />
 
-              <div class="relative z-20 w-full h-full">
-                <img
-                  src="https://cdn.sofifa.net/players/158/023/25_120.png"
-                  alt="Player Photo"
-                  class="absolute w-[60%] top-[20%] right-[20%]"
-                />
-                <div
-                  class="absolute top-[27%] left-[16%] text-center text-neutral-700"
-                >
-                  <p class="text-[40%] lg:text-[90%] font-bold">93</p>
-                  <p class="text-[27%] lg:text-[78%] font-semibold">Wc</p>
-                </div>
-                <div
-                  class="absolute top-[65%] w-full text-center text-neutral-700"
-                >
-                  <p class="text-[50%] lg:text-[80%] font-semibold">
-                    Lionel Messi
-                  </p>
-                  <div class="flex justify-between items-center px-[16%]">
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAC</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">SHO</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAS</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DRI</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DEF</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                  </div>
-                </div>
+              <div
+                class="relative z-20 w-[35%] aspect-square rounded-full bg-white flex items-center justify-center top-[40%] left-[35%]"
+              >
+                <img src="./assets/x.svg" alt="" class="w-[40%] rotate-45" />
               </div>
             </div>
             <div
-              class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 transition-transform"
+              id="RW"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
-                src="./assets/badge_gold.webp"
+                src="./assets/placeholder-card.webp"
                 alt="Player badge"
                 class="absolute w-full h-full z-10"
               />
 
-              <div class="relative z-20 w-full h-full">
-                <img
-                  src="https://cdn.sofifa.net/players/158/023/25_120.png"
-                  alt="Player Photo"
-                  class="absolute w-[60%] top-[20%] right-[20%]"
-                />
-                <div
-                  class="absolute top-[27%] left-[16%] text-center text-neutral-700"
-                >
-                  <p class="text-[40%] lg:text-[90%] font-bold">93</p>
-                  <p class="text-[27%] lg:text-[78%] font-semibold">Wc</p>
-                </div>
-                <div
-                  class="absolute top-[65%] w-full text-center text-neutral-700"
-                >
-                  <p class="text-[50%] lg:text-[80%] font-semibold">
-                    Lionel Messi
-                  </p>
-                  <div class="flex justify-between items-center px-[16%]">
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAC</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">SHO</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAS</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DRI</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DEF</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                  </div>
-                </div>
+              <div
+              class="relative z-20 w-[35%] aspect-square rounded-full bg-white flex items-center justify-center top-[40%] left-[35%]"
+            >
+              <img src="./assets/x.svg" alt="" class="w-[40%] rotate-45" />
+            </div>
+            </div>
+          </div> 
+          <div
+            id="Midfielders"
+            class="relative flex justify-between items-center px-[5%]"
+          >
+            <div
+              id="CM"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+            >
+              <img
+                src="./assets/placeholder-card.webp"
+                alt="Player badge"
+                class="absolute w-full h-full z-10"
+              />
+
+              <div
+              class="relative z-20 w-[35%] aspect-square rounded-full bg-white flex items-center justify-center top-[40%] left-[35%]"
+            >
+              <img src="./assets/x.svg" alt="" class="w-[40%] rotate-45" />
+            </div>
+            </div>
+            <div
+              id="CM"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+            >
+              <img
+                src="./assets/placeholder-card.webp"
+                alt="Player badge"
+                class="absolute w-full h-full z-10"
+              />
+
+              <div
+                class="relative z-20 w-[35%] aspect-square rounded-full bg-white flex items-center justify-center top-[40%] left-[35%]"
+              >
+                <img src="./assets/x.svg" alt="" class="w-[40%] rotate-45" />
+              </div>
+            </div>
+            <div
+              id="CM"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+            >
+              <img
+                src="./assets/placeholder-card.webp"
+                alt="Player badge"
+                class="absolute w-full h-full z-10"
+              />
+
+              <div
+                class="relative z-20 w-[35%] aspect-square rounded-full bg-white flex items-center justify-center top-[40%] left-[35%]"
+              >
+                <img src="./assets/x.svg" alt="" class="w-[40%] rotate-45" />
               </div>
             </div>
           </div>
-          <div class="relative flex justify-between items-center px-[5%]">
+          <div
+            id="defenders"
+            class="relative flex justify-between items-center px-[2%]"
+          >
             <div
-              class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 transition-transform"
+              id="LB"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
-                src="./assets/badge_gold.webp"
+                src="./assets/placeholder-card.webp"
                 alt="Player badge"
                 class="absolute w-full h-full z-10"
               />
 
-              <div class="relative z-20 w-full h-full">
-                <img
-                  src="https://cdn.sofifa.net/players/158/023/25_120.png"
-                  alt="Player Photo"
-                  class="absolute w-[60%] top-[20%] right-[20%]"
-                />
-                <div
-                  class="absolute top-[27%] left-[16%] text-center text-neutral-700"
-                >
-                  <p class="text-[40%] lg:text-[90%] font-bold">93</p>
-                  <p class="text-[27%] lg:text-[78%] font-semibold">Wc</p>
-                </div>
-                <div
-                  class="absolute top-[65%] w-full text-center text-neutral-700"
-                >
-                  <p class="text-[50%] lg:text-[80%] font-semibold">
-                    Lionel Messi
-                  </p>
-                  <div class="flex justify-between items-center px-[16%]">
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAC</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">SHO</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAS</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DRI</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DEF</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                  </div>
-                </div>
+              <div
+              class="relative z-20 w-[35%] aspect-square rounded-full bg-white flex items-center justify-center top-[40%] left-[35%]"
+            >
+              <img src="./assets/x.svg" alt="" class="w-[40%] rotate-45" />
+            </div>
+            </div>
+            <div
+              id="CB"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
+            >
+              <img
+                src="./assets/placeholder-card.webp"
+                alt="Player badge"
+                class="absolute w-full h-full z-10"
+              />
+
+              <div
+                class="relative z-20 w-[35%] aspect-square rounded-full bg-white flex items-center justify-center top-[40%] left-[35%]"
+              >
+                <img src="./assets/x.svg" alt="" class="w-[40%] rotate-45" />
               </div>
             </div>
             <div
-              class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 transition-transform"
+              id="CB"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
-                src="./assets/badge_gold.webp"
+                src="./assets/placeholder-card.webp"
                 alt="Player badge"
                 class="absolute w-full h-full z-10"
               />
 
-              <div class="relative z-20 w-full h-full">
-                <img
-                  src="https://cdn.sofifa.net/players/158/023/25_120.png"
-                  alt="Player Photo"
-                  class="absolute w-[60%] top-[20%] right-[20%]"
-                />
-                <div
-                  class="absolute top-[27%] left-[16%] text-center text-neutral-700"
-                >
-                  <p class="text-[40%] lg:text-[90%] font-bold">93</p>
-                  <p class="text-[27%] lg:text-[78%] font-semibold">Wc</p>
-                </div>
-                <div
-                  class="absolute top-[65%] w-full text-center text-neutral-700"
-                >
-                  <p class="text-[50%] lg:text-[80%] font-semibold">
-                    Lionel Messi
-                  </p>
-                  <div class="flex justify-between items-center px-[16%]">
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAC</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">SHO</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAS</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DRI</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DEF</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div
+              class="relative z-20 w-[35%] aspect-square rounded-full bg-white flex items-center justify-center top-[40%] left-[35%]"
+            >
+              <img src="./assets/x.svg" alt="" class="w-[40%] rotate-45" />
+            </div>
             </div>
             <div
-              class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 transition-transform"
+              id="RB"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
-                src="./assets/badge_gold.webp"
+                src="./assets/placeholder-card.webp"
                 alt="Player badge"
                 class="absolute w-full h-full z-10"
               />
 
-              <div class="relative z-20 w-full h-full">
-                <img
-                  src="https://cdn.sofifa.net/players/158/023/25_120.png"
-                  alt="Player Photo"
-                  class="absolute w-[60%] top-[20%] right-[20%]"
-                />
-                <div
-                  class="absolute top-[27%] left-[16%] text-center text-neutral-700"
-                >
-                  <p class="text-[40%] lg:text-[90%] font-bold">93</p>
-                  <p class="text-[27%] lg:text-[78%] font-semibold">Wc</p>
-                </div>
-                <div
-                  class="absolute top-[65%] w-full text-center text-neutral-700"
-                >
-                  <p class="text-[50%] lg:text-[80%] font-semibold">
-                    Lionel Messi
-                  </p>
-                  <div class="flex justify-between items-center px-[16%]">
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAC</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">SHO</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAS</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DRI</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DEF</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                  </div>
-                </div>
+              <div
+                class="relative z-20 w-[35%] aspect-square rounded-full bg-white flex items-center justify-center top-[40%] left-[35%]"
+              >
+                <img src="./assets/x.svg" alt="" class="w-[40%] rotate-45" />
               </div>
             </div>
           </div>
-          <div class="relative flex justify-between items-center px-[2%]">
-            <div
-              class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 transition-transform"
+          <div
+            id="Goalkeeper"
+            class="relative flex justify-center items-center"
+          >
+          <div
+              id="GK"
+              class="placeholder_player w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 cursor-pointer transition-transform"
             >
               <img
-                src="./assets/badge_gold.webp"
+                src="./assets/placeholder-card.webp"
                 alt="Player badge"
                 class="absolute w-full h-full z-10"
               />
 
-              <div class="relative z-20 w-full h-full">
-                <img
-                  src="https://cdn.sofifa.net/players/158/023/25_120.png"
-                  alt="Player Photo"
-                  class="absolute w-[60%] top-[20%] right-[20%]"
-                />
-                <div
-                  class="absolute top-[27%] left-[16%] text-center text-neutral-700"
-                >
-                  <p class="text-[40%] lg:text-[90%] font-bold">93</p>
-                  <p class="text-[27%] lg:text-[78%] font-semibold">Wc</p>
-                </div>
-                <div
-                  class="absolute top-[65%] w-full text-center text-neutral-700"
-                >
-                  <p class="text-[50%] lg:text-[80%] font-semibold">
-                    Lionel Messi
-                  </p>
-                  <div class="flex justify-between items-center px-[16%]">
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAC</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">SHO</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAS</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DRI</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DEF</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                  </div>
-                </div>
+              <div
+                class="relative z-20 w-[35%] aspect-square rounded-full bg-white flex items-center justify-center top-[40%] left-[35%]"
+              >
+                <img src="./assets/x.svg" alt="" class="w-[40%] rotate-45" />
               </div>
-            </div>
-            <div
-              class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 transition-transform"
-            >
-              <img
-                src="./assets/badge_gold.webp"
-                alt="Player badge"
-                class="absolute w-full h-full z-10"
-              />
-
-              <div class="relative z-20 w-full h-full">
-                <img
-                  src="https://cdn.sofifa.net/players/158/023/25_120.png"
-                  alt="Player Photo"
-                  class="absolute w-[60%] top-[20%] right-[20%]"
-                />
-                <div
-                  class="absolute top-[27%] left-[16%] text-center text-neutral-700"
-                >
-                  <p class="text-[40%] lg:text-[90%] font-bold">93</p>
-                  <p class="text-[27%] lg:text-[78%] font-semibold">Wc</p>
-                </div>
-                <div
-                  class="absolute top-[65%] w-full text-center text-neutral-700"
-                >
-                  <p class="text-[50%] lg:text-[80%] font-semibold">
-                    Lionel Messi
-                  </p>
-                  <div class="flex justify-between items-center px-[16%]">
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAC</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">SHO</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAS</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DRI</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DEF</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 transition-transform"
-            >
-              <img
-                src="./assets/badge_gold.webp"
-                alt="Player badge"
-                class="absolute w-full h-full z-10"
-              />
-
-              <div class="relative z-20 w-full h-full">
-                <img
-                  src="https://cdn.sofifa.net/players/158/023/25_120.png"
-                  alt="Player Photo"
-                  class="absolute w-[60%] top-[20%] right-[20%]"
-                />
-                <div
-                  class="absolute top-[27%] left-[16%] text-center text-neutral-700"
-                >
-                  <p class="text-[40%] lg:text-[90%] font-bold">93</p>
-                  <p class="text-[27%] lg:text-[78%] font-semibold">Wc</p>
-                </div>
-                <div
-                  class="absolute top-[65%] w-full text-center text-neutral-700"
-                >
-                  <p class="text-[50%] lg:text-[80%] font-semibold">
-                    Lionel Messi
-                  </p>
-                  <div class="flex justify-between items-center px-[16%]">
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAC</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">SHO</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAS</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DRI</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DEF</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 transition-transform"
-            >
-              <img
-                src="./assets/badge_gold.webp"
-                alt="Player badge"
-                class="absolute w-full h-full z-10"
-              />
-
-              <div class="relative z-20 w-full h-full">
-                <img
-                  src="https://cdn.sofifa.net/players/158/023/25_120.png"
-                  alt="Player Photo"
-                  class="absolute w-[60%] top-[20%] right-[20%]"
-                />
-                <div
-                  class="absolute top-[27%] left-[16%] text-center text-neutral-700"
-                >
-                  <p class="text-[40%] lg:text-[90%] font-bold">93</p>
-                  <p class="text-[27%] lg:text-[78%] font-semibold">Wc</p>
-                </div>
-                <div
-                  class="absolute top-[65%] w-full text-center text-neutral-700"
-                >
-                  <p class="text-[50%] lg:text-[80%] font-semibold">
-                    Lionel Messi
-                  </p>
-                  <div class="flex justify-between items-center px-[16%]">
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAC</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">SHO</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAS</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DRI</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DEF</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 transition-transform"
-            >
-              <img
-                src="./assets/badge_gold.webp"
-                alt="Player badge"
-                class="absolute w-full h-full z-10"
-              />
-
-              <div class="relative z-20 w-full h-full">
-                <img
-                  src="https://cdn.sofifa.net/players/158/023/25_120.png"
-                  alt="Player Photo"
-                  class="absolute w-[60%] top-[20%] right-[20%]"
-                />
-                <div
-                  class="absolute top-[27%] left-[16%] text-center text-neutral-700"
-                >
-                  <p class="text-[40%] lg:text-[90%] font-bold">93</p>
-                  <p class="text-[27%] lg:text-[78%] font-semibold">Wc</p>
-                </div>
-                <div
-                  class="absolute top-[65%] w-full text-center text-neutral-700"
-                >
-                  <p class="text-[50%] lg:text-[80%] font-semibold">
-                    Lionel Messi
-                  </p>
-                  <div class="flex justify-between items-center px-[16%]">
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAC</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">SHO</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">PAS</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DRI</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[15%] md:text-[50%]">DEF</p>
-                      <p class="text-[15%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="relative flex justify-center items-center">
-            <div
-              class="w-16 sm:w-24 md:w-30 lg:w-32 xl:w-36 aspect-[1/1.4] relative hover:scale-105 transition-transform"
-            >
-              <img
-                src="./assets/badge_gold.webp"
-                alt="Player badge"
-                class="absolute w-full h-full z-10"
-              />
-
-              <div class="relative z-20 w-full h-full">
-                <img
-                  src="https://cdn.sofifa.net/players/158/023/25_120.png"
-                  alt="Player Photo"
-                  class="absolute w-[60%] top-[20%] right-[20%]"
-                />
-                <div
-                  class="absolute top-[27%] left-[16%] text-center text-neutral-700"
-                >
-                  <p class="text-[40%] lg:text-[90%] font-bold">93</p>
-                  <p class="text-[27%] lg:text-[78%] font-semibold">Wc</p>
-                </div>
-                <div
-                  class="absolute top-[65%] w-full text-center text-neutral-700"
-                >
-                  <p class="text-[50%] lg:text-[80%] font-semibold">
-                    Lionel Messi
-                  </p>
-                  <div class="flex justify-between items-center px-[16%]">
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[5%] md:text-[50%]">PAC</p>
-                      <p class="text-[3%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[3%] md:text-[50%]">SHO</p>
-                      <p class="text-[3%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[3%] md:text-[50%]">PAS</p>
-                      <p class="text-[3%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[3%] md:text-[50%]">DRI</p>
-                      <p class="text-[3%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                    <div class="text-center font-semibold text-neutral-700">
-                      <p class="text-[3%] md:text-[50%]">DEF</p>
-                      <p class="text-[3%] md:text-[50%] font-semibold">39</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+            </div> 
+            
+        </div>
         </div>
       </div>
     </main>
     <div
-      class="fixed bg-zinc-100 w-full h-screen lg:w-[50%] shadow-lg z-50 right-0 transition-all duration-300 top-0 p-5"
+      id="players_list"
+      class="fixed bg-zinc-100 w-full h-full max-h-screen flex flex-col lg:w-[50%] shadow-lg z-50 open:right-0 -right-full transition-all duration-300 top-0 p-5"
     >
       <div class="flex justify-between">
-        <h1 class="text-xl font-bold text-neutral-700">Find a player</h1>
-        <img src="./assets/x.svg" alt="" class="w-7 ms-auto cursor-pointer" />
+        <h1 class="text-xl font-bold text-neutral-700">Select a Player</h1>
+        <img
+          src="./assets/x.svg"
+          alt=""
+          class="w-7 ms-auto cursor-pointer"
+          onclick="closeListPlayers()"
+        />
       </div>
-      <div class="player_list mt-16">
-        <div class="flex py-3 bg-zinc-50 rounded-lg shadow-md">
-          <img
-            src="https://cdn.sofifa.net/players/158/023/25_120.png"
-            alt=""
-            class="me-2"
-          />
-          <div class="flex-grow">
-            <div class="flex justify-between pe-5">
-                <h3 class="font-bold text-xl text-neutral-700">Lionel Messi</h3>
-                <div class="flex gap-x-2">
-                    <img src="https://cdn.sofifa.net/flags/ar.png" >
-                    <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="w-7" >
-                </div>
-            </div>
-            <div class="flex items-center gap-x-2 mt-1">
-              <img src="./assets/position.svg" alt="" class="w-5" />
-              <span class="font-bold text-red-400">WC</span>
-            </div>
-            <div>
-                <h4 class="font-bold mt-1">More info :</h4>
-                
-            </div>
-          </div>
-        </div>
+      <div class="mt-5 relative max-w-md">
+        <img
+          src="./assets/search.svg"
+          alt=""
+          class="absolute top-3.5 left-2.5 w-6"
+        />
+        <input
+          type="text"
+          class="py-3 rounded-md w-full border-none focus:outline-none pl-10"
+          placeholder="search by name"
+        />
       </div>
+      <div
+        class="players_list flex flex-col gap-y-3 mt-10 flex-grow h-full overflow-y-scroll"
+      ></div>
     </div>
     <script src="./script.js"></script>
   </body>
