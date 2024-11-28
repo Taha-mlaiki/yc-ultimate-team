@@ -287,6 +287,26 @@
               <small class="text-red-500 hidden"></small>
             </div>
             <div class="mb-4">
+              <label class="block font-medium mb-2">Flag</label>
+              <input
+                type="url"
+                name="flag"
+                class="w-full border rounded px-3 py-2 focus:outline-none"
+                placeholder="Flag URL"
+              />
+              <small class="text-red-500 hidden"></small>
+            </div>
+            <div class="mb-4">
+              <label class="block font-medium mb-2">Logo</label>
+              <input
+                type="url"
+                name="logo"
+                class="w-full border rounded px-3 py-2 focus:outline-none"
+                placeholder="Logo URL"
+              />
+              <small class="text-red-500 hidden"></small>
+            </div>
+            <div class="mb-4">
                 <label class="block font-medium mb-2">Rating</label>
                 <input
                   type="number"
@@ -327,7 +347,8 @@
           
         </div>
       </div>
-      
+      <div id="player_details" class="fixed hidden open:flex h-screen  items-center justify-center w-full inset-0 z-50 backdrop-blur-md">
+      </div>
     <script src="./script.js"></script>
   </body>
 </html>
