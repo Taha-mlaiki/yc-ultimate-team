@@ -417,39 +417,74 @@ const players = [
   },
 ];
 
-let awayPlayer = players;
-
 let activePlayer = [];
 
-document.querySelectorAll(".placeholder_player").forEach((ele) => {
-  ele.addEventListener("click", () => {
-    const targetElement = ele;
-    openListPlayers(targetElement);
-  });
-});
+let filteredPlayer = players;
 
-const openListPlayers = (targetElement, existName) => {
-  const filteredPlayers = players.filter(
-    (player) =>
-      player.position === targetElement.id &&
-      !activePlayer.some((active) => active.name === player.name)
-  );
-  RenderPlayerList(filteredPlayers, targetElement, existName);
+let existName = null;
+
+let playerList = document.querySelector(".players_list");
+
+let sideBar_title = document.getElementById("sideBar_title")
+
+const openListPlayers = () => {
   document.getElementById("players_list").toggleAttribute("open", true);
 };
+
+document.querySelectorAll(".placeholder_player").forEach((ele) => {
+  ele.onclick = () => {
+    const targetPosition = ele;
+    console.log("placeholder target",targetPosition)
+    sideBar_title.textContent = "Substitutes Player"
+    filteredPlayer = players.filter(
+      (player) =>
+        player.position === targetPosition.id &&
+        !activePlayer.some((active) => active.name === player.name)
+    );
+    openListPlayers();
+    renderListPlayers(targetPosition);
+  };
+});
 
 const closeListPlayers = () => {
   document.getElementById("players_list").toggleAttribute("open", false);
 };
 
-const appendPlayer = (player, targetPosition, existName) => {
-  if (existName) {
-    activePlayer = activePlayer.filter(
-      (pl) => pl.name.split(" ")[0] !== existName
-    );
-    console.log("active players :", activePlayer);
+const seeDetails = (playerName) => {
+  openListPlayers();
+  sideBar_title.textContent = "Player Details"
+
+  filteredPlayer = players.filter(
+    (pl) => pl.name.split(" ")[0] === playerName.split(" ")[0]
+  );
+
+  renderListPlayers();
+};
+
+const deletePlayer = (target)=>{
+    console.log(target)
+}
+
+const editPlayer = (player) => {
+  existName = player.name.split(" ")[0]; // Store the name for editing
+  const targetPosition = document.querySelector(`[data-name='${existName}']`);
+  sideBar_title.textContent = "Switch Players"
+  openListPlayers();
+  filteredPlayer = players.filter(
+    (pl) =>
+      pl.position === targetPosition.id && pl.name.split(" ")[0] !== existName
+  );
+
+
+  if (targetPosition) {
+    renderListPlayers(targetPosition);
+  } else {
+    console.error("Target position not found for editing.");
   }
-  activePlayer.push(player);
+  existName = null
+};
+
+const createPlayerCard = (player) => {
   let badge = "";
   if (player.rating >= 90) {
     badge = "badge_ballon_dor.webp";
@@ -458,64 +493,84 @@ const appendPlayer = (player, targetPosition, existName) => {
   } else {
     badge = "badge_total_rush.webp";
   }
-  const wrapper = document.createElement("div");
-  wrapper.innerHTML = `
-            <div
-                data-name=${player.name}
-                id=${player.position}
-                class="w-16 sm:w-24 md:w-30 group lg:w-32 xl:w-36 aspect-[1/1.4] relative z-20 cursor-pointer hover:scale-110 transition-transform activePlayers"
-            >
-            <div class="absolute hidden z-30 group-hover:block w-[150%] lg:w-[100%] p-2 shadow-lg -top-[10%] lg:-top-[5%] bg-white rounded-lg">
-                
+
+  const card = document.createElement("div");
+  card.dataset.name = player.name.split(" ")[0];
+  card.id = player.position;
+  card.className =
+    "w-16 sm:w-24 md:w-30 group lg:w-32 xl:w-36 aspect-[1/1.4] relative z-20 cursor-pointer hover:scale-110 transition-transform activePlayers";
+
+  card.innerHTML = `
+        <div class="absolute hidden z-30 group-hover:flex w-[150%] lg:w-[100%] items-center justify-between p-2 shadow-lg left-0 -top-[20%] lg:-top-[3%] bg-white rounded-lg">
+        </div>
+        <img src="./assets/${badge}" alt="Player badge" class="absolute w-full h-full z-10"/>
+        <div class="relative z-20 w-full h-full">
+            <img src="${player.photo}" alt="Player Photo" class="absolute w-[60%] top-[20%] right-[20%]"/>
+            <div class="absolute top-[27%] left-[16%] text-center text-white">
+                <p class="text-[40%] lg:text-[90%] font-bold">${player.rating}</p>
+                <p class="text-[27%] lg:text-[78%] font-semibold">${player.position}</p>
             </div>
-                <img
-                    src="./assets/${badge}"
-                    alt="Player badge"
-                    class="absolute w-full h-full z-10"
-                />
-                <div class="relative z-20 w-full h-full">
-                    <img
-                        src=${player.photo}
-                        alt="Player Photo"
-                        class="absolute w-[60%] top-[20%] right-[20%]"
-                    />
-                    <div
-                        class="absolute top-[27%] left-[16%] text-center text-white"
-                    >
-                        <p class="text-[40%] lg:text-[90%] font-bold">${
-                          player.rating
-                        }</p>
-                        <p class="text-[27%] lg:text-[78%] font-semibold">${
-                          player.position
-                        }</p>
-                    </div>
-                    <div
-                        class="absolute top-[65%] w-full text-center text-white"
-                    >
-                        <p class="text-[50%] max-w-[70%] mx-auto w-full truncate  lg:text-[80%] font-semibold">
-                            ${player.name}
-                        </p>
-                        <div class="flex items-center justify-center gap-x-2"> 
-                            <img src=${player.logo} class="w-[10%] h-[10%]" >
-                            <img src=${player.flag} class="w-[10%] h-[10%]">
-                        </div>
-                    </div>
+            <div class="absolute top-[65%] w-full text-center text-white">
+                <p class="text-[50%] max-w-[70%] mx-auto w-full truncate lg:text-[80%] font-semibold">${player.name}</p>
+                <div class="flex items-center justify-center gap-x-2"> 
+                    <img src="${player.logo}" class="w-[10%] h-[10%]">
+                    <img src="${player.flag}" class="w-[10%] h-[10%]">
                 </div>
             </div>
-        `;
+        </div>
+    `;
 
-  const newCard = wrapper.firstElementChild;
-  targetPosition.replaceWith(newCard);
+  const actionMenu = card.querySelector(".absolute.hidden");
+  const seeDet = document.createElement("img");
+  seeDet.src = "./assets/eye.svg";
+  seeDet.className = "w-4";
+  seeDet.onclick = () => seeDetails(player.name);
 
-  closeListPlayers();
-  checkActivePlayers();
+  const editpl = document.createElement("img");
+  editpl.src = "./assets/sync.png";
+  editpl.className = "w-4";
+  editpl.onclick = () => editPlayer(player, card);
+
+  const deletPl = document.createElement("img");
+  deletPl.src = "./assets/trash.svg";
+  deletPl.className = "w-4";
+  deletPl.onclick = () => deletePlayer()
+
+  actionMenu.appendChild(seeDet);
+  actionMenu.appendChild(editpl);
+  actionMenu.appendChild(deletPl);
+
+  return card;
 };
 
-const RenderPlayerList = (away_players, targetPosition, existName) => {
-  let playerList = document.querySelector(".players_list");
-  playerList.innerHTML = "";
+const appendPlayer = (player, targetElement) => {
+  openListPlayers();
+  if (!targetElement) {
+    console.error("Invalid target element.");
+    return;
+  }
+  console.log(targetElement);
 
-  away_players.forEach((player) => {
+  if (existName && typeof existName === "string") {
+    activePlayer = players.filter((pl) => pl.name.split(" ")[0] !== existName);
+  }
+
+  const newCard = createPlayerCard(player);
+  activePlayer.push(player);
+
+  targetElement.replaceWith(newCard);
+
+  existName = null;
+  closeListPlayers();
+};
+
+const renderListPlayers = (targetPosition) => {
+  playerList.innerHTML = "";
+    
+
+  console.log("from renderListPlayers :", targetPosition);
+
+  filteredPlayer.forEach((player) => {
     const playerCard = document.createElement("div");
     playerCard.className =
       "flex py-3 cursor-pointer bg-zinc-50 rounded-lg shadow-md";
@@ -599,27 +654,21 @@ const RenderPlayerList = (away_players, targetPosition, existName) => {
                       : ""
                   }
               </div>
+              <div class="w-full flex justify-end px-3 mt-5">
+                 ${existName ? `<img src="./assets/sync.png" class="w-7 animate-spin" >` : ""}
+              </div>
             </div>
       `;
 
-    playerCard.addEventListener("click", () =>
-      appendPlayer(player, targetPosition, existName)
-    );
+    if (targetPosition) {
+      playerCard.onclick = () => {
+        appendPlayer(player, targetPosition);
+      };
+    }
 
     playerList.appendChild(playerCard);
   });
-};
-
-const createPlayer = () => {};
-
-const checkActivePlayers = () => {
-  document.querySelectorAll(".activePlayers").forEach((pl) => {
-    pl.addEventListener("click", () => {
-      let existName = pl.attributes[0].value.split(" ");
-
-      openListPlayers(pl, existName[0]);
-    });
-  });
+  console.log(filteredPlayer)
 };
 
 let createPlayerPop = document.getElementById("createPop");
@@ -651,7 +700,7 @@ const positionAttributes = {
 };
 
 document.getElementById("positionSelect").addEventListener("change", (e) => {
-    let dynamicFields = document.getElementById("dynamicFields");
+  let dynamicFields = document.getElementById("dynamicFields");
 
   dynamicFields.innerHTML = "";
 
@@ -691,9 +740,9 @@ document.getElementById("positionSelect").addEventListener("change", (e) => {
 let playerForm = document.getElementById("playerForm");
 
 document.getElementById("playerForm").addEventListener("submit", function (e) {
-  e.preventDefault(); 
+  e.preventDefault();
 
-  const playerForm = document.getElementById("playerForm")
+  const playerForm = document.getElementById("playerForm");
   let formData = new FormData(playerForm);
   let playerData = Object.fromEntries(formData.entries());
 
@@ -728,13 +777,12 @@ document.getElementById("playerForm").addEventListener("submit", function (e) {
   } else {
     photoError.textContent = "";
     photoError.classList.add("hidden");
-}
-if(!isValid){
-    return
-}
-    console.log("taha is the best")
-    console.log(playerData)
+  }
+  if (!isValid) {
+    return;
+  }
+  console.log("taha is the best");
+  console.log(playerData);
   players.push(playerData);
   onCloseCreatePlayer();
-  
 });
