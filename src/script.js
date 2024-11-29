@@ -729,8 +729,9 @@ const renderListPlayers = (targetPosition) => {
 
   filteredPlayer.forEach((player) => {
     const playerCard = document.createElement("div");
-    playerCard.className =
-      "flex py-3 cursor-pointer bg-zinc-50 rounded-lg shadow-md";
+    playerCard.className = `flex py-3 ${
+      targetPosition && "cursor-pointer"
+    } bg-zinc-50 rounded-lg shadow-md`;
 
     playerCard.innerHTML = `
             <img src=${player.photo} alt="" class="me-2 w-20 lg:w-32" />
@@ -900,8 +901,6 @@ document.getElementById("playerForm").addEventListener("submit", function (e) {
   console.log(logoInput.value);
   console.log(ratingInput.value);
 
-  
-
   let isValid = true;
 
   const urlRegex =
@@ -968,24 +967,33 @@ document.getElementById("playerForm").addEventListener("submit", function (e) {
     ratingError.classList.add("hidden");
   }
 
-  let statisctics = document.querySelectorAll("input[data-ref='player_statistic']")
-  statisctics.forEach((ele)=>{
-    if(ele.value < 1 || ele.value > 100){
-        ele.nextElementSibling.classList.remove("hidden")
-        ele.nextElementSibling.textContent = "Field is required!"
-        return
+  let statisctics = document.querySelectorAll(
+    "input[data-ref='player_statistic']"
+  );
+  statisctics.forEach((ele) => {
+    if (ele.value < 1) {
+      ele.nextElementSibling.classList.remove("hidden");
+      ele.nextElementSibling.textContent = "Field is required!";
+      isValid = false;
+      return;
+    } else if (ele.value > 100) {
+      ele.nextElementSibling.classList.remove("hidden");
+      ele.nextElementSibling.textContent = "number must be between 1 and 100";
+      isValid = false;
+    } else {
+      ele.nextElementSibling.classList.add("hidden");
     }
-  })
+  });
 
   if (!isValid) {
     return;
   }
- document.querySelectorAll("small").forEach((ele)=>{
+  document.querySelectorAll("small").forEach((ele) => {
     ele.classList.add("hidden");
- })
- document.querySelectorAll("#playerForm input").forEach((ele)=>{
-    ele.value = ""
- })
+  });
+  document.querySelectorAll("#playerForm input").forEach((ele) => {
+    ele.value = "";
+  });
 
   players.push(playerData);
 
@@ -1006,4 +1014,3 @@ const showAllPlayers = () => {
   renderListPlayers();
   openListPlayers();
 };
-
