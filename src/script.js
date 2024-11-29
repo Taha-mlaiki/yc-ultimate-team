@@ -427,8 +427,24 @@ let playerList = document.querySelector(".players_list");
 
 let sideBar_title = document.getElementById("sideBar_title");
 
+let playerForm = document.getElementById("playerForm");
+
+let createPlayerPop = document.getElementById("createPop");
+
 const openListPlayers = () => {
   document.getElementById("players_list").toggleAttribute("open", true);
+};
+
+const closeListPlayers = () => {
+  document.getElementById("players_list").toggleAttribute("open", false);
+};
+
+const onOpenCreatePlayer = () => {
+  createPlayerPop.toggleAttribute("open", true);
+};
+
+const onCloseCreatePlayer = () => {
+  createPlayerPop.toggleAttribute("open", false);
 };
 
 const checkPlaceholders = () => {
@@ -446,11 +462,8 @@ const checkPlaceholders = () => {
     };
   });
 };
-checkPlaceholders();
 
-const closeListPlayers = () => {
-  document.getElementById("players_list").toggleAttribute("open", false);
-};
+checkPlaceholders();
 
 const seeDetails = (playerName) => {
   let player_details = document.getElementById("player_details");
@@ -817,15 +830,6 @@ const renderListPlayers = (targetPosition) => {
   });
 };
 
-let createPlayerPop = document.getElementById("createPop");
-
-const onOpenCreatePlayer = () => {
-  createPlayerPop.toggleAttribute("open", true);
-};
-const onCloseCreatePlayer = () => {
-  createPlayerPop.toggleAttribute("open", false);
-};
-
 const positionAttributes = {
   GK: [
     { name: "diving", label: "Diving", type: "number" },
@@ -850,40 +854,29 @@ document.getElementById("positionSelect").addEventListener("change", (e) => {
 
   dynamicFields.innerHTML = "";
 
-  if (e.target.value === "GK") {
-    positionAttributes["GK"].forEach((attr) => {
-      const field = document.createElement("div");
-      field.className = "mb-3";
-      field.innerHTML = `
-        <label class="block font-medium mb-2">${attr.label}</label>
+  let position = e.target.value === "GK" ? "GK" : "CM";
+
+  positionAttributes[position].forEach((attr) => {
+    const field = document.createElement("div");
+    field.className = "mb-3";
+    field.innerHTML = `
+        <div class="mb-2 block">
+        <label class="font-medium">${attr.label}</label>
         <input
           type="${attr.type}"
           name="${attr.name}"
+          data-ref = "player_statistic"
           class="w-full border rounded px-3 py-2"
           placeholder="${attr.label}"
         />
-      `;
-      dynamicFields.appendChild(field);
-    });
-  } else {
-    positionAttributes["CM"].forEach((attr) => {
-      const field = document.createElement("div");
-      field.className = "mb-3";
-      field.innerHTML = `
-          <label class="block font-medium mb-2">${attr.label}</label>
-          <input
-            type="${attr.type}"
-            name="${attr.name}"
-            class="w-full border rounded px-3 py-2"
-            placeholder="${attr.label}"
-          />
-        `;
-      dynamicFields.appendChild(field);
-    });
-  }
-});
+        <small class="text-red-500 hidden">
 
-let playerForm = document.getElementById("playerForm");
+        </small>
+        </div>
+      `;
+    dynamicFields.appendChild(field);
+  });
+});
 
 document.getElementById("playerForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -901,6 +894,12 @@ document.getElementById("playerForm").addEventListener("submit", function (e) {
   const flagError = flagInput.nextElementSibling;
   const logoError = logoInput.nextElementSibling;
   const ratingError = ratingInput.nextElementSibling;
+
+  console.log(flagInput.value);
+  console.log(logoInput.value);
+  console.log(ratingInput.value);
+
+  
 
   let isValid = true;
 
@@ -922,7 +921,7 @@ document.getElementById("playerForm").addEventListener("submit", function (e) {
 
   // Photo  validation
 
-  if (photoInput.value && !urlRegex.test(photoInput.value.trim())) {
+  if (photoInput.value.length < 2 && !urlRegex.test(photoInput.value.trim())) {
     photoError.textContent = "Please provide a valid URL.";
     photoError.classList.remove("hidden");
     isValid = false;
@@ -933,7 +932,7 @@ document.getElementById("playerForm").addEventListener("submit", function (e) {
 
   // logo validation
 
-  if (logoInput.value && !urlRegex.test(logoInput.value.trim())) {
+  if (logoInput.value.length < 2 && !urlRegex.test(logoInput.value.trim())) {
     logoError.textContent = "Please provide a valid URL.";
     logoError.classList.remove("hidden");
     isValid = false;
@@ -944,7 +943,7 @@ document.getElementById("playerForm").addEventListener("submit", function (e) {
 
   // flag validation
 
-  if (flagInput.value && !urlRegex.test(flagInput.value.trim())) {
+  if (flagInput.value.length < 2 && !urlRegex.test(flagInput.value.trim())) {
     flagError.textContent = "Please provide a valid URL.";
     flagError.classList.remove("hidden");
     isValid = false;
@@ -968,9 +967,24 @@ document.getElementById("playerForm").addEventListener("submit", function (e) {
     ratingError.classList.add("hidden");
   }
 
+  let statisctics = document.querySelectorAll("input[data-ref='player_statistic']")
+  statisctics.forEach((ele)=>{
+    if(ele.value < 1 || ele.value > 100){
+        ele.nextElementSibling.classList.remove("hidden")
+        ele.nextElementSibling.textContent = "Field is required!"
+        return
+    }
+  })
+
   if (!isValid) {
     return;
   }
+ document.querySelectorAll("small").forEach((ele)=>{
+    ele.classList.add("hidden");
+ })
+ document.querySelectorAll("#playerForm input").forEach((ele)=>{
+    ele.value = ""
+ })
 
   players.push(playerData);
 
@@ -984,10 +998,9 @@ document.getElementById("playerForm").addEventListener("submit", function (e) {
   onCloseCreatePlayer();
 });
 
-
-const showAllPlayers = ()=>{
-    existName = null
-    filteredPlayer = players;
-    renderListPlayers();
-    openListPlayers();
-}
+const showAllPlayers = () => {
+  existName = null;
+  filteredPlayer = players;
+  renderListPlayers();
+  openListPlayers();
+};
