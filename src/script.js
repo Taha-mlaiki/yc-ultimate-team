@@ -38,7 +38,7 @@ const players = [
     nationality: "Belgium",
     flag: "https://cdn.sofifa.net/flags/be.png",
     club: "Manchester City",
-    logo: "https://cdn.sofifa.net/players/239/085/25_120.png",
+    logo: "https://cdn.sofifa.net/flags/be.png",
     rating: 91,
     pace: 74,
     shooting: 86,
@@ -326,6 +326,7 @@ const players = [
     position: "RB",
     nationality: "England",
     flag: "https://cdn.sofifa.net/flags/gb-eng.png",
+    logo: "https://cdn.sofifa.net/flags/gb-eng.png",
     club: "Liverpool",
     rating: 87,
     pace: 76,
@@ -1005,3 +1006,4 @@ const showAllPlayers = () => {
   renderListPlayers();
   openListPlayers();
 };
+
