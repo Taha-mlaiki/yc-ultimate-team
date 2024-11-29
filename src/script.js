@@ -612,10 +612,10 @@ const deletePlayer = (target) => {
 };
 
 const editPlayer = (player) => {
-  existName = player.name.split(" ")[0]; 
+  existName = player.name.split(" ")[0];
   const targetPosition = document.querySelector(`[data-name='${existName}']`);
   sideBar_title.textContent = "Switch Players";
-  
+
   activePlayer = activePlayer.filter((pl) => pl.name !== player.name);
   openListPlayers();
   filteredPlayer = players.filter(
@@ -887,18 +887,25 @@ let playerForm = document.getElementById("playerForm");
 
 document.getElementById("playerForm").addEventListener("submit", function (e) {
   e.preventDefault();
-
   const playerForm = document.getElementById("playerForm");
   let formData = new FormData(playerForm);
   let playerData = Object.fromEntries(formData.entries());
 
-  const nameInput = document.querySelector("input[name='name']");
-  const photoInput = document.querySelector("input[name='photo']");
-
+  const nameInput = e.target["name"];
+  const photoInput = e.target["photo"];
+  const flagInput = e.target["flag"];
+  const logoInput = e.target["logo"];
+  const ratingInput = e.target["rating"];
   const nameError = nameInput.nextElementSibling;
   const photoError = photoInput.nextElementSibling;
+  const flagError = flagInput.nextElementSibling;
+  const logoError = logoInput.nextElementSibling;
+  const ratingError = ratingInput.nextElementSibling;
 
   let isValid = true;
+
+  const urlRegex =
+    /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-]*)*\/?$/;
 
   // Name validation
   if (
@@ -913,10 +920,9 @@ document.getElementById("playerForm").addEventListener("submit", function (e) {
     nameError.classList.add("hidden");
   }
 
-  // Photo URL validation
-  const photoRegex =
-    /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-]*)*\/?$/;
-  if (photoInput.value && !photoRegex.test(photoInput.value.trim())) {
+  // Photo  validation
+
+  if (photoInput.value && !urlRegex.test(photoInput.value.trim())) {
     photoError.textContent = "Please provide a valid URL.";
     photoError.classList.remove("hidden");
     isValid = false;
@@ -924,10 +930,64 @@ document.getElementById("playerForm").addEventListener("submit", function (e) {
     photoError.textContent = "";
     photoError.classList.add("hidden");
   }
+
+  // logo validation
+
+  if (logoInput.value && !urlRegex.test(logoInput.value.trim())) {
+    logoError.textContent = "Please provide a valid URL.";
+    logoError.classList.remove("hidden");
+    isValid = false;
+  } else {
+    logoError.textContent = "";
+    logoError.classList.add("hidden");
+  }
+
+  // flag validation
+
+  if (flagInput.value && !urlRegex.test(flagInput.value.trim())) {
+    flagError.textContent = "Please provide a valid URL.";
+    flagError.classList.remove("hidden");
+    isValid = false;
+  } else {
+    flagError.textContent = "";
+    flagError.classList.add("hidden");
+  }
+
+  // rating validation
+  if (
+    !ratingInput.value.trim() ||
+    isNaN(ratingInput.value) ||
+    ratingInput.value < 1 ||
+    ratingInput.value > 100
+  ) {
+    ratingError.textContent = "Rating must be a number between 1 and 100.";
+    ratingError.classList.remove("hidden");
+    isValid = false;
+  } else {
+    ratingError.textContent = "";
+    ratingError.classList.add("hidden");
+  }
+
   if (!isValid) {
     return;
   }
 
   players.push(playerData);
+
+  e.target["name"].value = "";
+  e.target["photo"].value = "";
+  e.target["flag"].value = "";
+  e.target["logo"].value = "";
+  e.target["rating"].value = "";
+  e.target["position"].value = "";
+
   onCloseCreatePlayer();
 });
+
+
+const showAllPlayers = ()=>{
+    existName = null
+    filteredPlayer = players;
+    renderListPlayers();
+    openListPlayers();
+}
