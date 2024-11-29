@@ -668,6 +668,10 @@ video {
   margin-inline-end: 0.5rem;
 }
 
+.me-4 {
+  margin-inline-end: 1rem;
+}
+
 .ms-auto {
   margin-inline-start: auto;
 }
@@ -690,10 +694,6 @@ video {
 
 .mt-5 {
   margin-top: 1.25rem;
-}
-
-.me-4 {
-  margin-inline-end: 1rem;
 }
 
 .block {

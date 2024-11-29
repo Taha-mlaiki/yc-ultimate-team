@@ -627,7 +627,7 @@ const deletePlayer = (target) => {
 const editPlayer = (player) => {
   existName = player.name.split(" ")[0];
   const targetPosition = document.querySelector(`[data-name='${existName}']`);
-  sideBar_title.textContent = "Switch Players";
+  sideBar_title.textContent = "Switch Player";
 
   activePlayer = activePlayer.filter((pl) => pl.name !== player.name);
   openListPlayers();
@@ -999,6 +999,7 @@ document.getElementById("playerForm").addEventListener("submit", function (e) {
 });
 
 const showAllPlayers = () => {
+  sideBar_title.textContent = "All Players available";
   existName = null;
   filteredPlayer = players;
   renderListPlayers();
